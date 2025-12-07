@@ -1,0 +1,64 @@
+import java.util.Scanner;
+class Account
+{
+    String holderName;
+    String acc_name;
+    long acc_no;
+    double acc_balance;
+    double withdraw_amount;
+    String time;
+    String date;
+    Account(String holderName,String acc_name,long acc_no,double acc_balance,double withdraw_amount,String time,String date)
+    {
+        this.holderName=holderName;
+        this.acc_name=acc_name;
+        this.acc_no=acc_no;
+        this.acc_balance=acc_balance;
+        this.withdraw_amount=withdraw_amount;
+        this.time=time;
+        this.date=date;
+    }
+    class Transaction
+    {
+        void display()
+        {
+            System.out.println("Account Holder Name:"+holderName);
+            System.out.println("Account Name:"+acc_name);
+            System.out.println("Account Number:"+acc_no);
+            System.out.println("Account Balance:"+acc_balance);
+            System.out.println("Withdraw Amount:"+withdraw_amount);
+            if(withdraw_amount>acc_balance)
+            {
+                System.out.println("Insufficient Balance for Withdrawal:");
+            }else{
+                System.out.println("Withdrawal Successful:");
+                double updated_balance=acc_balance-withdraw_amount;
+                System.out.println("Updated Balance After Withdrawal:"+updated_balance);
+            }
+            System.out.println("Time & Date"+time+"  , "+date);
+        }
+    }
+}
+public class Transaction{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter Account Holder Name:");
+        String holderName=sc.nextLine();
+        System.out.println("Enter Account Name:");
+        String acc_name=sc.nextLine();
+        System.out.println("Enter Account Number:");
+        long no=sc.nextLong();
+        System.out.println("Enter Account Balance:");
+        double balance=sc.nextDouble();
+        System.out.println("Enter Amount to be Withdrawn:");
+        double amt=sc.nextDouble();
+        System.out.println("Enter Time Of Transaction:");
+        String time=sc.next();
+        System.out.println("Enter Date of Transaction:");
+        String date=sc.next();
+        Account a=new Account(holderName,acc_name,no,balance,amt,time,date);
+        Account.Transaction t=a.new Transaction();
+        t.display();
+    }
+}    
